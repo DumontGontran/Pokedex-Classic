@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "ES6",
+    "noEmitOnError": true,
+    "strict": true
+  },
+  "files": [
+    "src/getAllPokemon.ts",
+    "src/getOnePokemon.ts",
+    "src/getOnePokemonDescription.ts"
+  ]
+}
