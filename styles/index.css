@@ -145,7 +145,7 @@ main {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: auto;
-    grid-template-areas: ". . . pokedex-empty pokedex-empty pokedex-empty . . ..";
+    grid-template-areas: ". . . pokemon-empty pokedex-empty pokemon-empty pokemon-empty . . .";
     margin-top: 70px;
 }
 
