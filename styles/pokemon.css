@@ -41,10 +41,12 @@ main {
     display: grid;
     grid-template-areas: ". pokemon-image-container ."
                         "pokemon-id pokemon-name ."
-                        "pokemon-types pokemon-abilities ."
-                        "pokemon-height pokemon-weight ."
+                        "pokemon-types pokemon-abilities pokemon-habitat"
+                        "pokemon-height pokemon-weight pokemon-growthrate"
                         ". . ."
                         "pokemon-description pokemon-description pokemon-description"
+                        ". . ."
+                        ". pokemon-evolutions pokemon-evolutions"
                         ;
 
     grid-template-rows: repeat(10, 1fr);
@@ -95,7 +97,7 @@ main {
     height: 30px;
     grid-area: pokemon-name;
     color: black;
-    text-decoration: none;
+    text-decoration: underline;
     font-size: 30px;
 }
 
@@ -106,6 +108,16 @@ main {
     font-weight: bold;
     height: 30px;
     grid-area: pokemon-types;
+}
+
+.pokemon-habitat {
+    margin: 0;
+    margin-right: auto;
+    color: black;
+    text-shadow: 0 0 10px black;
+    font-weight: bold;
+    height: 30px;
+    grid-area: pokemon-habitat;
 }
 
 .pokemon-abilities {
@@ -133,11 +145,30 @@ main {
     grid-area: pokemon-weight;
 }
 
+.pokemon-growthrate {
+    margin: 0;
+    margin-right: auto;
+    color: black;
+    font-weight: bold;
+    height: 30px;
+    grid-area: pokemon-growthrate;
+}
+
 .pokemon-description {
+    margin: 0 50px;
+    color: black;
+    text-shadow: 0 0 10px black;
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+    grid-area: pokemon-description;
+}
+
+.pokemon-evolutions {
     margin: 0 50px;
     color: black;
     font-size: 20px;
     font-weight: bold;
     height: 30px;
-    grid-area: pokemon-description;
+    grid-area: pokemon-evolutions;
 }
