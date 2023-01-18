@@ -119,11 +119,40 @@ main {
     align-items: center;
 }
 
+.search-form {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 50px;
+    left: 210px;
+}
+
+#search {
+    background-color: rgba(255, 255, 255);
+    border: 2px solid grey;
+}
+
+#search:focus {
+    color: white;
+    background-color: transparent;
+}
+
+#search::placeholder {
+    color: black;
+}
+
 #pokedex {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: auto;
-    margin-top: 40px;
+    grid-template-areas: ". . . pokedex-empty pokedex-empty pokedex-empty . . ..";
+    margin-top: 70px;
+}
+
+.pokedex-empty {
+    color:red;
+    font-weight: bold;
+    grid-area: pokedex-empty;
 }
 
 .pokemon-block {
