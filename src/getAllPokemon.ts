@@ -1,13 +1,21 @@
-const fetchPokemon = async (id: number) => {
+const fetchPokemon = async (id: number | string) => {
+
     await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-    .then((res) => res.json())
-    .then((data) => {
-        createPokemon(data);
-    });
+        .then((res) => res.json())
+        .then((data) => {
+            createPokemon(data);
+        })
+        .catch(() => {
+            const pokedex = <HTMLElement>document.querySelector('#pokedex');
+            const empty = document.createElement('p');
+            empty.textContent = 'No pokemon of this name exists in the pokedex !';
+            empty.classList.add('pokedex-empty');
+            pokedex.append(empty);
+        });
 }
 
 const fetchPokemons = async (number: number) => {
-    for(let i = 1; i <= number; i++) {
+    for (let i = 1; i <= number; i++) {
         await fetchPokemon(i);
     }
 }
@@ -37,8 +45,34 @@ const createPokemon = (pokemon: any) => {
     card.append(spriteContainer, id, name);
 
     pokedex.appendChild(card);
-
-
 }
 
-fetchPokemons(151);
+document.addEventListener('DOMContentLoaded', () => {
+    fetchPokemons(151);
+}, false);
+
+document.querySelector('#search')!.addEventListener('change', async (event: any) => {
+    event.preventDefault();
+
+    if (event.target.value !== '') {
+        event.preventDefault();
+        console.log(event.target.value);
+        let pokedex = <HTMLElement>document.querySelector('#pokedex');
+        pokedex.remove();
+        const main = <HTMLElement>document.querySelector('main');
+        pokedex = <HTMLDivElement>document.createElement('div');
+        pokedex.id = 'pokedex';
+        main.appendChild(pokedex);
+        return await fetchPokemon(event.target.value);
+    }
+
+    event.preventDefault();
+    console.log(event.target.value);
+    let pokedex = <HTMLElement>document.querySelector('#pokedex');
+    pokedex.remove();
+    const main = <HTMLElement>document.querySelector('main');
+    pokedex = <HTMLDivElement>document.createElement('div');
+    pokedex.id = 'pokedex';
+    main.appendChild(pokedex);
+    await fetchPokemons(151);
+});
