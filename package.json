@@ -1,6 +1,6 @@
 {
-  "name": "first_typescript_project",
-  "version": "1.0.0",
+  "name": "pokedex_classic",
+  "version": "1.5.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
