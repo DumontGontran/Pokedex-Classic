@@ -8,8 +8,6 @@ const fetchOnePokemon = async () => {
             console.log(data);
             createOnePokemon(data);
         });
-
-
 }
 
 const createOnePokemon = (pokemon: any) => {
@@ -49,11 +47,10 @@ const createOnePokemon = (pokemon: any) => {
     weight.classList.add('pokemon-weight');
     weight.textContent = `Weight: ${pokemon.weight}`;
 
-    setTimeout(() => {
-        card.append(spriteContainer, id, name, types, abilities, height, weight);
-    }, 100);
+    card.append(spriteContainer, id, name, types, abilities, height, weight);
 
     pokedex.appendChild(card);
+    createNavigationPokemon();
 }
 
 fetchOnePokemon();
