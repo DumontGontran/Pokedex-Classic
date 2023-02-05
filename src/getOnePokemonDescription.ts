@@ -2,13 +2,12 @@ const fetchOnePokemonDescription = async () => {
     const params = new URLSearchParams(document.location.search);
     const id: number = Number(params.get('id'));
 
-    await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            createOnePokemonDescription(data);
-        });
-}
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
+    const data = await response.json();
+
+    console.log(data);
+    createOnePokemonDescription(data);
+} 
 
 const createOnePokemonDescription = (pokemonDescription: any) => {
     const article = <HTMLElement>document.querySelector('article');

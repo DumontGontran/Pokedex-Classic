@@ -2,12 +2,11 @@ const fetchOnePokemon = async () => {
     const params = new URLSearchParams(document.location.search);
     const id: number = Number(params.get('id'));
 
-    await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            createOnePokemon(data);
-        });
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+    const data = await response.json();
+
+    console.log(data);
+    createOnePokemon(data);
 }
 
 const createOnePokemon = (pokemon: any) => {
