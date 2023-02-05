@@ -39,7 +39,7 @@ main {
 
 .pokemon-block {
     display: grid;
-    grid-template-areas: ". pokemon-image-container ."
+    grid-template-areas: "arrow-left pokemon-image-container arrow-right"
                         "pokemon-id pokemon-name ."
                         "pokemon-types pokemon-abilities pokemon-habitat"
                         "pokemon-height pokemon-weight pokemon-growthrate"
@@ -72,14 +72,38 @@ main {
     height: 300px;
 }
 
-.pokemon-image-container .arrow-left {
-    width: 300px;
-    height: 300px;
+.fa-arrow-circle-left {
+    margin-left: auto;
+    width: 75px;
+    height: 75px;
 }
 
-.pokemon-image-container .arrow-right {
-    width: 300px;
-    height: 300px;
+.fa-arrow-circle-right {
+    margin-right: auto;
+    width: 75px;
+    height: 75px;
+}
+
+.fa-arrow-circle-left:before {
+    display: grid;
+    margin-top: 20px;
+    font-size: 75px;
+    cursor: pointer;
+    grid-area: arrow-left;
+}
+
+.fa-arrow-circle-right:before {
+    display: grid;
+ 
+    margin-top: 20px;
+    font-size: 75px;
+    cursor:  pointer;
+    grid-area: arrow-right;
+}
+
+.fa-arrow-circle-left:hover, .fa-arrow-circle-right:hover {
+    text-shadow: 0 0 15px skyblue;
+    color: rgb(0, 0, 0, 0.7);
 }
 
 .pokemon-id {
