@@ -19,6 +19,7 @@ const createOnePokemon = (pokemon: any) => {
     
     const sprite = <HTMLImageElement>document.createElement('img');
     sprite.src = pokemon.sprites.front_default;
+    sprite.alt = pokemon.name;
 
     spriteContainer.appendChild(sprite);
 
