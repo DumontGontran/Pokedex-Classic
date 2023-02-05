@@ -8,6 +8,7 @@
   "files": [
     "src/getAllPokemon.ts",
     "src/getOnePokemon.ts",
-    "src/getOnePokemonDescription.ts"
+    "src/getOnePokemonDescription.ts",
+    "src/pokedexNavigation.ts"
   ]
 }
