@@ -8,9 +8,9 @@ const fetchPokemon = async (id: number | string): Promise<void> => {
         const empty = document.createElement('p');
         empty.textContent = 'No pokemon of this name exists in the pokedex !';
         empty.classList.add('pokedex-empty');
-        pokedex.append(empty); 
-    } 
-} 
+        pokedex.append(empty);
+    }
+}
 
 const fetchPokemons = async (number: number): Promise<void> => {
     for (let i = 1; i <= number; i++) {
@@ -18,7 +18,14 @@ const fetchPokemons = async (number: number): Promise<void> => {
     }
 }
 
-const createPokemon = ({ pokemon }: { pokemon: { id: number; name: string; sprites: any } }) => {
+const createPokemon = ({ pokemon }:
+    {
+        pokemon: {
+            id: number;
+            name: string;
+            sprites: any
+        }
+    }) => {
     const pokedex = document.querySelector('#pokedex') as HTMLElement;
     const card = document.createElement('a') as HTMLAnchorElement;
     card.classList.add('pokemon-block');
@@ -44,7 +51,7 @@ const createPokemon = ({ pokemon }: { pokemon: { id: number; name: string; sprit
     card.append(spriteContainer, id, name);
 
     pokedex?.appendChild(card);
-} 
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
     await fetchPokemons(151);
@@ -65,6 +72,6 @@ document.querySelector('#search')!.addEventListener('change', async (event: any)
         return await fetchPokemon(event.target.value);
     }
 
-    console.log(event.target.value);    
-    await fetchPokemons(151); 
+    console.log(event.target.value);
+    await fetchPokemons(151);
 }); 

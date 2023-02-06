@@ -5,10 +5,32 @@ const fetchOnePokemonDescription = async (): Promise<void> => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
     const data = await response.json();
 
-    createOnePokemonDescription(data);
-} 
+    createOnePokemonDescription({ pokemonDescription: data });
+}
 
-const createOnePokemonDescription = (pokemonDescription: any) => {
+const createOnePokemonDescription = ({ pokemonDescription }:
+    {
+        pokemonDescription:
+        {
+            flavor_text_entries: any;
+            color: {
+                color: string;
+                name: string
+            };
+            habitat: {
+                habitat: string;
+                name: string
+            };
+            growth_rate: {
+                growth_rate: string;
+                name: string
+            };
+            evolves_from_species: {
+                evolves_from_species: string;
+                name: string
+            }
+        }
+    }) => {
     const article = document.querySelector('article') as HTMLElement;
 
     const description = document.createElement('p') as HTMLElement;
