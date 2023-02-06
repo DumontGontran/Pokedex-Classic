@@ -2,7 +2,6 @@ const fetchPokemon = async (id: number | string): Promise<void> => {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
         const data = await response.json();
-        console.log(data);
 
         if (id < 1 || id > 151 || data.id < 1 || data.id > 151) {
             throw new Error('This pokemon doesn\'t exists in the pokedex !');
@@ -78,10 +77,21 @@ document.querySelector('.search-button')?.addEventListener('click', async (event
     main.appendChild(pokedex);
 
     if (pokemonName !== '') {
-        console.log(pokemonName);
         return await fetchPokemon(pokemonName);
     }
 
-    console.log(pokemonName);
+    await fetchPokemons(151);
+});
+
+document.querySelector('.search-clean')?.addEventListener('click', async (event: any) => {
+    event.preventDefault();
+
+    let pokedex = document.querySelector('#pokedex') as HTMLDivElement;
+    pokedex.remove();
+    const main = document.querySelector('main') as HTMLElement;
+    pokedex = document.createElement('div') as HTMLDivElement;
+    pokedex.id = 'pokedex';
+    main.appendChild(pokedex);
+
     await fetchPokemons(151);
 });
