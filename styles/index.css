@@ -149,7 +149,7 @@ main {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto;
-    grid-template-areas: ". . pokemon-empty pokedex-empty . .";
+    grid-template-areas: ". pokemon-empty pokemon-empty pokedex-empty pokemon-empty .";
     margin-top: 70px;
 }
 
