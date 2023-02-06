@@ -1,8 +1,9 @@
 body {
     background-image: url(../images/background.jpg);
     background-attachment: fixed;
+    background-position: center center;
     background-repeat:no-repeat;
-    background-size: 100vmax 100vmax;
+    background-size: cover;
     margin-block-start: 0;
 }
 
