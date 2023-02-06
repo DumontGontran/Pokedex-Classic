@@ -5,24 +5,28 @@ body {
     background-repeat:no-repeat;
     background-size: cover;
     margin-block-start: 0;
+    margin: 0;
 }
 
 .loader {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:  repeat(3, 1fr);
+    grid-template-areas: ". . ."
+                        ". loader ."
+                        ". . .";
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vmax;
-    height: 100vmax;
+    width: 100%;
     z-index: -1;
     background-color: skyblue;
     animation: loading 3000ms ease-in-out 1 forwards;
 }
 
 .loader .loader-image {
-    position: fixed;
-    top: 30vh;
-    left: 40vw;
-    margin: 10px 10px;
+    grid-area: loader;
+    margin: auto auto;
     width: 300px;
     height: 300px;
     background: linear-gradient(rgb(255, 0, 0) 50%, rgb(240, 240, 240) 50%);
@@ -245,7 +249,6 @@ main {
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: auto;
         grid-template-areas: "pokemon-empty pokemon-empty pokedex-empty pokemon-empty";
-        margin-top: 70px;
     }
 }
 
@@ -255,6 +258,9 @@ main {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
         grid-template-areas: "pokemon-empty pokemon-empty";
-        margin-top: 70px;
+    }
+
+    .search-form label {
+        display:none;
     }
 }
