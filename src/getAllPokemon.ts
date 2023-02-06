@@ -1,10 +1,10 @@
-const fetchPokemon = async (id: number | string) => {
+const fetchPokemon = async (id: number | string): Promise<void> => {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
         const data = await response.json();
         createPokemon(data);
     } catch (err) {
-        const pokedex = <HTMLElement>document.querySelector('#pokedex');
+        const pokedex = document.querySelector('#pokedex') as HTMLElement;
         const empty = document.createElement('p');
         empty.textContent = 'No pokemon of this name exists in the pokedex !';
         empty.classList.add('pokedex-empty');
@@ -12,7 +12,7 @@ const fetchPokemon = async (id: number | string) => {
     } 
 } 
 
-const fetchPokemons = async (number: number) => {
+const fetchPokemons = async (number: number): Promise<void> => {
     for (let i = 1; i <= number; i++) {
         await fetchPokemon(i);
     }
@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.querySelector('#search')!.addEventListener('change', async (event: any) => {
     event.preventDefault();
 
-    let pokedex = <HTMLElement>document.querySelector('#pokedex');
+    let pokedex = document.querySelector('#pokedex') as HTMLElement;
     pokedex.remove();
-    const main = <HTMLElement>document.querySelector('main');
-    pokedex = <HTMLDivElement>document.createElement('div');
+    const main = document.querySelector('main') as HTMLElement;
+    pokedex = document.createElement('div') as HTMLDivElement;
     pokedex.id = 'pokedex';
     main.appendChild(pokedex);
 

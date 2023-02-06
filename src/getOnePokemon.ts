@@ -1,49 +1,48 @@
-const fetchOnePokemon = async () => {
+const fetchOnePokemon = async (): Promise<void> => {
     const params = new URLSearchParams(document.location.search);
     const id: number = Number(params.get('id'));
 
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
     const data = await response.json();
 
-    console.log(data);
     createOnePokemon(data);
 }
 
 const createOnePokemon = (pokemon: any) => {
-    const pokedex = <HTMLElement>document.querySelector('#pokedex');
-    const card = <HTMLElement>document.createElement('article');
+    const pokedex = document.querySelector('#pokedex') as HTMLElement;
+    const card = document.createElement('article') as HTMLElement;
     card.classList.add('pokemon-block');
 
-    const spriteContainer = <HTMLDivElement>document.createElement('div');
+    const spriteContainer = document.createElement('div') as HTMLDivElement;
     spriteContainer.classList.add('pokemon-image-container');
     
-    const sprite = <HTMLImageElement>document.createElement('img');
+    const sprite = document.createElement('img') as HTMLImageElement;
     sprite.src = pokemon.sprites.front_default;
     sprite.alt = pokemon.name;
 
     spriteContainer.appendChild(sprite);
 
-    const id = <HTMLElement>document.createElement('p');
+    const id = document.createElement('p') as HTMLElement;
     id.classList.add('pokemon-id');
     id.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
 
-    const name = <HTMLElement>document.createElement('p');
+    const name = document.createElement('p') as HTMLElement;
     name.classList.add('pokemon-name');
     name.textContent = pokemon.name;
 
-    const types = <HTMLElement>document.createElement('p');
+    const types = document.createElement('p') as HTMLElement;
     types.classList.add('pokemon-types');
     types.textContent = `Main type: ${pokemon.types[0].type.name}`;
 
-    const abilities = <HTMLElement>document.createElement('p');
+    const abilities = document.createElement('p') as HTMLElement;
     abilities.classList.add('pokemon-abilities');
     abilities.textContent = `Main ability: ${pokemon.abilities[0].ability.name}`;
 
-    const height = <HTMLElement>document.createElement('p');
+    const height = document.createElement('p') as HTMLElement;
     height.classList.add('pokemon-height');
     height.textContent = `Height: ${pokemon.height}`;
 
-    const weight = <HTMLElement>document.createElement('p');
+    const weight = document.createElement('p') as HTMLElement;
     weight.classList.add('pokemon-weight');
     weight.textContent = `Weight: ${pokemon.weight}`;
 
