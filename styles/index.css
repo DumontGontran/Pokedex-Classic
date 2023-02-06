@@ -1,8 +1,9 @@
 body {
     background-image: url(../images/background.jpg);
     background-attachment: fixed;
+    background-position: center center;
     background-repeat:no-repeat;
-    background-size: 100vmax 100vmax;
+    background-size: cover;
     margin-block-start: 0;
 }
 
@@ -124,7 +125,8 @@ main {
     flex-direction: row;
     position: absolute;
     top: 50px;
-    left: 210px;
+    left: auto;
+    right: auto;
 }
 
 #search {
@@ -143,9 +145,9 @@ main {
 
 #pokedex {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto;
-    grid-template-areas: ". . . pokemon-empty pokedex-empty pokemon-empty pokemon-empty . . .";
+    grid-template-areas: ". . pokemon-empty pokedex-empty . .";
     margin-top: 70px;
 }
 
