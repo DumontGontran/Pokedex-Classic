@@ -2,7 +2,7 @@ const fetchPokemon = async (id: number | string): Promise<void> => {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
         const data = await response.json();
-        createPokemon(data);
+        createPokemon({ pokemon: data });
     } catch (err) {
         const pokedex = document.querySelector('#pokedex') as HTMLElement;
         const empty = document.createElement('p');
@@ -18,7 +18,7 @@ const fetchPokemons = async (number: number): Promise<void> => {
     }
 }
 
-const createPokemon = (pokemon: any) => {
+const createPokemon = ({ pokemon }: { pokemon: { id: number; name: string; sprites: any } }) => {
     const pokedex = document.querySelector('#pokedex') as HTMLElement;
     const card = document.createElement('a') as HTMLAnchorElement;
     card.classList.add('pokemon-block');
@@ -35,7 +35,7 @@ const createPokemon = (pokemon: any) => {
 
     const id = document.createElement('p') as HTMLElement;
     id.classList.add('pokemon-id');
-    id.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
+    id.textContent = `#${pokemon.id.toString().padStart(3, String(0))}`;
 
     const name = document.createElement('p') as HTMLElement;
     name.classList.add('pokemon-name');
