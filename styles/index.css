@@ -135,11 +135,13 @@ main {
 }
 
 #search:focus {
+    text-align: center;
     color: white;
     background-color: transparent;
 }
 
 #search::placeholder {
+    text-align: center;
     color: black;
 }
 
