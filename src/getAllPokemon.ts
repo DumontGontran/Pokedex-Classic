@@ -2,11 +2,17 @@ const fetchPokemon = async (id: number | string): Promise<void> => {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
         const data = await response.json();
-        createPokemon({ pokemon: data });
-    } catch (err) {
+
+        if (id < 1 || id > 151) {
+            throw new Error('This pokemon doesn\'t exists in the pokedex !');
+        } else {
+            createPokemon({ pokemon: data });
+        }
+
+    } catch (err: any) {
         const pokedex = document.querySelector('#pokedex') as HTMLElement;
-        const empty = document.createElement('p');
-        empty.textContent = 'No pokemon of this name exists in the pokedex !';
+        const empty = document.createElement('p') as HTMLParagraphElement;
+        empty.textContent = 'This pokemon doesn\'t exists in the pokedex !';
         empty.classList.add('pokedex-empty');
         pokedex.append(empty);
     }
@@ -40,11 +46,11 @@ const createPokemon = ({ pokemon }:
 
     spriteContainer.appendChild(sprite);
 
-    const id = document.createElement('p') as HTMLElement;
+    const id = document.createElement('p') as HTMLParagraphElement;
     id.classList.add('pokemon-id');
     id.textContent = `#${pokemon.id.toString().padStart(3, String(0))}`;
 
-    const name = document.createElement('p') as HTMLElement;
+    const name = document.createElement('p') as HTMLParagraphElement;
     name.classList.add('pokemon-name');
     name.textContent = pokemon.name;
 
@@ -57,10 +63,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     await fetchPokemons(151);
 }, false);
 
-document.querySelector('#search')!.addEventListener('change', async (event: any) => {
+document.querySelector('#search')?.addEventListener('change', async (event: any) => {
     event.preventDefault();
 
-    let pokedex = document.querySelector('#pokedex') as HTMLElement;
+    let pokedex = document.querySelector('#pokedex') as HTMLDivElement;
     pokedex.remove();
     const main = document.querySelector('main') as HTMLElement;
     pokedex = document.createElement('div') as HTMLDivElement;
