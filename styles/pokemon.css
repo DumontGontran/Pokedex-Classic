@@ -111,7 +111,6 @@ main {
 
 .fa-arrow-circle-right:before {
     display: grid;
- 
     margin-top: 20px;
     font-size: 75px;
     cursor:  pointer;
@@ -119,8 +118,7 @@ main {
 }
 
 .fa-arrow-circle-left:hover, .fa-arrow-circle-right:hover {
-    text-shadow: 0 0 15px skyblue;
-    color: rgb(0, 0, 0, 0.7);
+    color: rgba(25, 173, 207, 0.7);
 }
 
 .pokemon-id {
@@ -215,7 +213,77 @@ main {
 }
 
 .pokedex-empty {
-    color:red;
+    color:lightcoral;
     font-weight: bold;
     grid-area: pokedex-empty;
+}
+
+@media screen and (max-width: 767px) {
+    .pokemon-block {
+        grid-template-areas: "arrow-left pokemon-image-container pokemon-image-container arrow-right"
+                            "pokemon-id pokemon-id pokemon-name pokemon-name"
+                            "pokemon-abilities pokemon-abilities pokemon-types pokemon-types"
+                            "pokemon-height pokemon-height pokemon-habitat pokemon-habitat"
+                            "pokemon-weight pokemon-weight pokemon-growthrate pokemon-growthrate"
+                            "pokemon-description pokemon-description pokemon-description pokemon-description"
+                            "pokemon-description pokemon-description pokemon-description pokemon-description"
+                            "pokemon-evolutions pokemon-evolutions pokemon-evolutions pokemon-evolutions"
+                            ;
+    
+        grid-template-rows: repeat(8, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        width: 320px;
+        height: 700px;
+    }
+
+    .pokemon-image-container {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .pokemon-image-container img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .pokemon-id {
+        margin: 0 auto;
+    }
+
+    .pokemon-name {
+        margin: 0 auto;
+    }
+
+    .pokemon-abilities {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .pokemon-types {
+        margin: 0 auto;
+    }
+
+    .pokemon-height {
+        margin: 0 auto;
+    }
+
+    .pokemon-habitat {
+        margin: 0 auto;
+    }
+
+    .pokemon-weight {
+        margin: 0 auto;
+    }
+
+    .pokemon-growthrate {
+        margin: 0 auto;
+    }
+
+    .pokemon-description {
+        text-align: center;
+    }
+
+    .pokemon-evolutions {
+        text-align: center;
+    }
 }

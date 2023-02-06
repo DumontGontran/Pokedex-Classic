@@ -32,7 +32,7 @@ body {
 }
 
 .loader .loader-image .circle {
-    position: relative;
+    position: fixed;
     top: 85px;
     left:85px;
     margin: 10px 10px;
@@ -44,8 +44,8 @@ body {
 }
 
 .loader .loader-image .line-one {
-    position: relative;
-    top: 10px;
+    position: fixed;
+    top: 140px;
     left: -10px;
     margin: 10px 10px;
     width: 100px;
@@ -54,8 +54,8 @@ body {
 }
 
 .loader .loader-image .line-two {
-    position: relative;
-    top: -110px;
+    position: fixed;
+    top: 140px;
     left: 193px;
     margin: 10px 10px;
     width: 100px;
@@ -124,25 +124,75 @@ main {
     display: flex;
     flex-direction: row;
     position: absolute;
-    top: 50px;
+    top: 60px;
     left: auto;
     right: auto;
 }
 
-#search {
-    background-color: rgba(255, 255, 255);
-    border: 2px solid grey;
+.search-form label {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: white;
+    background-color: skyblue;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid white;
 }
 
-#search:focus {
+#search {
+    text-align: center;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid white;
+}
+
+#search:focus-visible {
     text-align: center;
     color: white;
+    font-weight: bold;
+    border-inline-color: transparent;
     background-color: transparent;
 }
 
-#search::placeholder {
+#search::placeholder:focus-visible {
     text-align: center;
-    color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.search-button {
+    cursor: pointer;
+    background-color: skyblue;
+    border-color: transparent;
+    width: 40px;
+    border: 1px solid white;
+}
+
+.search-button:hover {
+    background-color: lightseagreen;
+}
+
+.search-button .fa-search {
+    color:white;
+}
+
+.search-clean {
+    cursor: pointer;
+    background-color: skyblue;
+    border-color: transparent;
+    width: 40px;
+    border: 1px solid white;
+    border-radius: 0 5px 5px 0;
+}
+
+.search-clean:hover {
+    background-color: lightcoral;
+}
+
+.search-clean .fa-times {
+    color: white;
 }
 
 #pokedex {
@@ -150,11 +200,11 @@ main {
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto;
     grid-template-areas: ". pokemon-empty pokemon-empty pokedex-empty pokemon-empty .";
-    margin-top: 70px;
+    margin-top: 110px;
 }
 
 .pokedex-empty {
-    color:red;
+    color:lightcoral;
     font-weight: bold;
     grid-area: pokedex-empty;
 }
@@ -199,7 +249,7 @@ main {
     }
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) {
+@media screen and (max-width: 767px) {
     #pokedex {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
