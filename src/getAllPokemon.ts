@@ -67,31 +67,21 @@ document.querySelector('.search-button')?.addEventListener('click', async (event
     event.preventDefault();
 
     const search = document.querySelector('#search') as HTMLInputElement;
-    let pokemonName: string | number = search.value;
-
-    let pokedex = document.querySelector('#pokedex') as HTMLDivElement;
-    pokedex.remove();
-    const main = document.querySelector('main') as HTMLElement;
-    pokedex = document.createElement('div') as HTMLDivElement;
-    pokedex.id = 'pokedex';
-    main.appendChild(pokedex);
+    const pokemonName: string | number = search.value;
 
     if (pokemonName !== '') {
+        let pokedex = document.querySelector('#pokedex') as HTMLDivElement;
+        pokedex.remove();
+        const main = document.querySelector('main') as HTMLElement;
+        pokedex = document.createElement('div') as HTMLDivElement;
+        pokedex.id = 'pokedex';
+        main.appendChild(pokedex);
+        search.value = '';
         return await fetchPokemon(pokemonName);
     }
-
-    await fetchPokemons(151);
 });
 
 document.querySelector('.search-clean')?.addEventListener('click', async (event: any) => {
     event.preventDefault();
-
-    let pokedex = document.querySelector('#pokedex') as HTMLDivElement;
-    pokedex.remove();
-    const main = document.querySelector('main') as HTMLElement;
-    pokedex = document.createElement('div') as HTMLDivElement;
-    pokedex.id = 'pokedex';
-    main.appendChild(pokedex);
-
-    await fetchPokemons(151);
+    window.location.reload();
 });
