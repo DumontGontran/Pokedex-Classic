@@ -213,3 +213,9 @@ main {
     height: 30px;
     grid-area: pokemon-evolutions;
 }
+
+.pokedex-empty {
+    color:red;
+    font-weight: bold;
+    grid-area: pokedex-empty;
+}
