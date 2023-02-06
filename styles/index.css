@@ -182,7 +182,7 @@ main {
     color:white;
 }
 
-.search-clean {
+.search-reload {
     cursor: pointer;
     background-color: skyblue;
     border-color: transparent;
@@ -191,11 +191,11 @@ main {
     border-radius: 0 5px 5px 0;
 }
 
-.search-clean:hover {
+.search-reload:hover {
     background-color: lightcoral;
 }
 
-.search-clean .fa-times {
+.search-reload .fa-redo-alt {
     color: white;
 }
 

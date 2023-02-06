@@ -81,7 +81,7 @@ document.querySelector('.search-button')?.addEventListener('click', async (event
     }
 });
 
-document.querySelector('.search-clean')?.addEventListener('click', async (event: any) => {
+document.querySelector('.search-reload')?.addEventListener('click', async (event: any) => {
     event.preventDefault();
     window.location.reload();
 });
