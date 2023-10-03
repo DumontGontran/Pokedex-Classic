@@ -1,7 +1,7 @@
 # INITIALISATION
 ## NPM INSTALL
 
-Run `npm install @types/node tsc-watch typescript --save-dev` in your terminal at the root of this project.
+Run `npm install` in your terminal at the root of this project.
 
 ## COMMANDS
 
