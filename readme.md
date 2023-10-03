@@ -9,4 +9,4 @@ Run `npx tsc --watch` in your terminal at the root of this project to compile Ty
 
 # USE THE PROJECT
 
-Run **Live Server Extension** on **Visual Studio Code** OR Open **index.html file in your browser**.
+Open **index.html file in your browser**.
