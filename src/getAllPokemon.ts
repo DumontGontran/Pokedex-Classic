@@ -1,15 +1,15 @@
-const fetchPokemon = async (id: number | string): Promise<void> => {
+const fetchPokemon = async (id: string | number): Promise<void> => {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-        const data = await response.json();
+        const data: Pokemon = await response.json();
 
-        if (id < 1 || id > 151 || data.id < 1 || data.id > 151) {
+        if (data.id < 1 || data.id > 151) {
             throw new Error('This pokemon doesn\'t exists in the pokedex !');
         } else {
             createPokemon({ pokemon: data });
         }
 
-    } catch (err: any) {
+    } catch (err: unknown) {
         const pokedex = document.querySelector('#pokedex') as HTMLElement;
         const empty = document.createElement('p') as HTMLParagraphElement;
         empty.textContent = 'This pokemon doesn\'t exists in the pokedex !';
@@ -18,20 +18,14 @@ const fetchPokemon = async (id: number | string): Promise<void> => {
     }
 }
 
-const fetchPokemons = async (number: number): Promise<void> => {
-    for (let i = 1; i <= number; i++) {
+const fetchPokemons = async (all: number): Promise<void> => {
+    all = 151;
+    for (let i = 1; i <= all; i++) {
         await fetchPokemon(i);
     }
 }
 
-const createPokemon = ({ pokemon }:
-    {
-        pokemon: {
-            id: number;
-            name: string;
-            sprites: any
-        }
-    }) => {
+const createPokemon = ({ pokemon }: { pokemon: Pokemon }) => {
     const pokedex = document.querySelector('#pokedex') as HTMLElement;
     const card = document.createElement('a') as HTMLAnchorElement;
     card.classList.add('pokemon-block');
@@ -63,11 +57,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     await fetchPokemons(151);
 }, false);
 
-document.querySelector('.search-button')?.addEventListener('click', async (event: any) => {
+document.querySelector('.search-button')?.addEventListener('click', async (event: Event) => {
     event.preventDefault();
 
     const search = document.querySelector('#search') as HTMLInputElement;
-    const pokemonName: string | number = search.value;
+    const pokemonName: string = search.value;
 
     if (pokemonName !== '') {
         let pokedex = document.querySelector('#pokedex') as HTMLDivElement;
@@ -81,7 +75,7 @@ document.querySelector('.search-button')?.addEventListener('click', async (event
     }
 });
 
-document.querySelector('.search-reload')?.addEventListener('click', async (event: any) => {
+document.querySelector('.search-reload')?.addEventListener('click', async (event: Event) => {
     event.preventDefault();
     window.location.reload();
 });

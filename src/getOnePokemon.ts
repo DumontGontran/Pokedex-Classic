@@ -4,7 +4,7 @@ const fetchOnePokemon = async (): Promise<void> => {
         const id: number = Number(params.get('id'));
 
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-        const data = await response.json();
+        const data: Pokemon = await response.json();
 
         if (id < 1 || id > 151) {
             throw new Error('This pokemon doesn\'t exists in the pokedex !');
@@ -12,7 +12,7 @@ const fetchOnePokemon = async (): Promise<void> => {
             createOnePokemon({ pokemon: data });
         }
 
-    } catch (err: any) {
+    } catch (err: unknown) {
         const pokedex = document.querySelector('#pokedex') as HTMLElement;
         const empty = document.createElement('p') as HTMLParagraphElement;
         empty.textContent = 'This pokemon doesn\'t exists in the pokedex !';
@@ -21,21 +21,7 @@ const fetchOnePokemon = async (): Promise<void> => {
     }
 }
 
-const createOnePokemon = ({ pokemon }:
-    {
-        pokemon: {
-            id: number;
-            name: string;
-            sprites: {
-                sprites: string;
-                front_default: string
-            };
-            types: any;
-            abilities: any;
-            height: string;
-            weight: string
-        }
-    }) => {
+const createOnePokemon = ({ pokemon }: { pokemon: Pokemon }) => {
     const pokedex = document.querySelector('#pokedex') as HTMLDivElement;
     const card = document.createElement('article') as HTMLElement;
     card.classList.add('pokemon-block');

@@ -9,6 +9,7 @@
     "src/getAllPokemon.ts",
     "src/getOnePokemon.ts",
     "src/getOnePokemonDescription.ts",
-    "src/pokedexNavigation.ts"
+    "src/pokedexNavigation.ts",
+    "src/types.ts"
   ]
 }

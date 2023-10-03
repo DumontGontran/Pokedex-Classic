@@ -4,14 +4,14 @@ const fetchOnePokemonDescription = async (): Promise<void> => {
         const id: number = Number(params.get('id'));
 
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
-        const data = await response.json();
+        const data: PokemonDescription = await response.json();
         if (id < 1 || id > 151) {
             throw new Error('');
         } else {
         createOnePokemonDescription({ pokemonDescription: data });
         }
     }
-    catch (err: any) {
+    catch (err: unknown) {
         const pokedex = document.querySelector('#pokedex') as HTMLElement;
         const empty = document.createElement('p') as HTMLParagraphElement;
         empty.textContent = '';
@@ -20,29 +20,8 @@ const fetchOnePokemonDescription = async (): Promise<void> => {
     }
 }
 
-const createOnePokemonDescription = ({ pokemonDescription }:
-    {
-        pokemonDescription:
-        {
-            flavor_text_entries: any;
-            color: {
-                color: string;
-                name: string
-            };
-            habitat: {
-                habitat: string;
-                name: string
-            };
-            growth_rate: {
-                growth_rate: string;
-                name: string
-            };
-            evolves_from_species: {
-                evolves_from_species: string;
-                name: string
-            }
-        }
-    }) => {
+const createOnePokemonDescription = ({pokemonDescription}:{ pokemonDescription: PokemonDescription}) => {
+    
     const article = document.querySelector('article') as HTMLElement;
 
     const description = document.createElement('p') as HTMLParagraphElement;
