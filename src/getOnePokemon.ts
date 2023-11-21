@@ -1,18 +1,14 @@
 const fetchOnePokemon = async (): Promise<void> => {
-    try {
-        const params = new URLSearchParams(document.location.search);
-        const id: number = Number(params.get('id'));
+    const params = new URLSearchParams(document.location.search);
+    const id: number = Number(params.get('id'));
 
+    if (id >= 1 && id <= 151) {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
         const data: Pokemon = await response.json();
 
-        if (id < 1 || id > 151) {
-            throw new Error('This pokemon doesn\'t exists in the pokedex !');
-        } else {
-            createOnePokemon({ pokemon: data });
-        }
-
-    } catch (err: unknown) {
+        createOnePokemon({ pokemon: data });
+    }
+    else {
         const pokedex = document.querySelector('#pokedex') as HTMLElement;
         const empty = document.createElement('p') as HTMLParagraphElement;
         empty.textContent = 'This pokemon doesn\'t exists in the pokedex !';
